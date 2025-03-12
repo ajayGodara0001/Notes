@@ -151,10 +151,15 @@ app.get("/api/user", authenticate , async (req, res) => {
 });
 
 app.get("/api/logout", (req, res) => {
-    res.clearCookie("token");   
+    res.clearCookie("token", {
+        httpOnly: true, 
+        secure: true, // Ensure it's only sent over HTTPS
+        sameSite: "None", // Required for cross-origin cookies
+        path: "/", // Ensure it clears on all paths
+    });
+
     res.status(200).json({ message: "Logged out successfully" });
 });
-
 
 app.get("/api/allnotes", authenticate, async (req, res) => {
     try {
