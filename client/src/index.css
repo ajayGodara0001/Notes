@@ -1,0 +1,12 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+@layer base {
+  body {
+      @apply text-black min-h-screen;
+      scroll-behavior: smooth; /* Enables smooth scrolling */
+      background-color: #f9f9f9;
+  }
+
+}
